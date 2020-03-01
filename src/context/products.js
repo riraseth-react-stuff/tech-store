@@ -10,8 +10,10 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [featured, setFeatured] = useState([]);
   useEffect(() => {
+    setLoading(true);
     axios.get(`${url}/products`).then(response => {
       setProducts(response.data);
+      setLoading(false);
     });
   }, []);
   return (
