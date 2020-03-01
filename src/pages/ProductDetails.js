@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductContext } from '../context/products';
-// import {CartContext} from '../context/cart';
+import { CartContext } from '../context/cart';
 import { useHistory } from 'react-router-dom';
 import Loading from '../components/Loading';
 export default function ProductDetails() {
   const { id } = useParams();
   const history = useHistory();
   const { products } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext);
   const product = products.find(product => product.id === parseInt(id));
   if (products.length === 0) {
     return <Loading></Loading>;
@@ -28,7 +29,7 @@ export default function ProductDetails() {
           <button
             className="btn btn-primary btn-block"
             onClick={() => {
-              //add to cart
+              addToCart(product);
               history.push('/cart');
             }}
           >
