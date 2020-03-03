@@ -12,9 +12,12 @@ import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 //components
 import Header from './components/Header';
+//scroll to top
+import ScrollToTop from 'react-router-scroll-top';
 export default function App() {
   return (
     <Router>
+      <ScrollToTop></ScrollToTop>
       <Header></Header>
       <Switch>
         <Route exact path="/">
