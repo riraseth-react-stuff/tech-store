@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 //strapi function
-
+import loginUser from '../strapi/loginUser';
+import registerUser from '../strapi/registerUser';
 //handle user
 import { useHistory } from 'react-router-dom';
 
@@ -12,15 +13,35 @@ export default function Login() {
   //state values
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // default so isEmpty works properly while signing in, with '' it'd always be false
   const [username, setUsername] = useState('default');
   const [isMember, setIsMember] = useState(true);
 
-  let isEmpty = false;
+  let isEmpty = !email || !password || !username;
 
-  const toggleMember = () => {};
+  const toggleMember = () => {
+    setIsMember(prevMember => {
+      //function gets old value as a parameter
+      let isMember = !prevMember;
+      isMember ? setUsername('default') : setUsername('');
+      return isMember;
+    });
+  };
 
   const handleSubmit = async e => {
+    // alert
     e.preventDefault();
+    let response;
+    if (isMember) {
+      //response = await loginUser
+    } else {
+      // response = await registerUser
+    }
+    if (response) {
+      //
+    } else {
+      // show alert
+    }
   };
 
   return (
