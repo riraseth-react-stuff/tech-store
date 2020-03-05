@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 //strapi function
 import loginUser from '../strapi/loginUser';
 import registerUser from '../strapi/registerUser';
 //handle user
 import { useHistory } from 'react-router-dom';
-
+import { UserContext } from '../context/user';
 export default function Login() {
   const history = useHistory();
   // setup user context
-
+  const { userLogin } = useContext(UserContext);
   //state values
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,9 +38,13 @@ export default function Login() {
       response = await registerUser({ email, password, username });
     }
     if (response) {
-      //
-      console.log('success');
-      console.log(response);
+      const {
+        jwt: token,
+        user: { username }
+      } = response.data;
+      const newUser = { token, username };
+      userLogin(newUser);
+      history.push('/products');
     } else {
       // show alert
       console.log('error');
