@@ -9,7 +9,7 @@ import { UserContext } from '../context/user';
 export default function Login() {
   const history = useHistory();
   // setup user context
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, alert, showAlert } = useContext(UserContext);
   //state values
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -44,10 +44,15 @@ export default function Login() {
       } = response.data;
       const newUser = { token, username };
       userLogin(newUser);
+      showAlert({
+        msg: `${username} logged in successfully. Shop away`
+      });
       history.push('/products');
     } else {
-      // show alert
-      console.log('error');
+      showAlert({
+        msg: 'there was an error. please try again..',
+        type: 'danger'
+      });
     }
   };
 

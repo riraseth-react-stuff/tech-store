@@ -12,6 +12,7 @@ import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 //components
 import Header from './components/Header';
+import Alert from './components/Alert';
 //scroll to top
 import ScrollToTop from 'react-router-scroll-top';
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
     <Router>
       <ScrollToTop></ScrollToTop>
       <Header></Header>
+      <Alert></Alert>
       <Switch>
         <Route exact path="/">
           <Home></Home>
