@@ -20,6 +20,10 @@ function UserProvider({ children }) {
   const userLogout = () => {
     setUser({ username: null, token: null });
     localStorage.removeItem('user');
+    setAlert({ show: true, msg: 'user logged out' });
+    setTimeout(() => {
+      hideAlert();
+    }, 3000);
   };
 
   const [alert, setAlert] = useState({ show: false, msg: '', type: 'success' });
@@ -28,7 +32,7 @@ function UserProvider({ children }) {
     setAlert({ show: true, msg, type });
     setTimeout(() => {
       hideAlert();
-    }, 2000);
+    }, 4000);
   };
   const hideAlert = () => {
     setAlert({ ...alert, show: false });

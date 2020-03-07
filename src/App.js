@@ -13,6 +13,7 @@ import ProductDetails from './pages/ProductDetails';
 //components
 import Header from './components/Header';
 import Alert from './components/Alert';
+import PrivateRoute from './components/PrivateRoute';
 //scroll to top
 import ScrollToTop from 'react-router-scroll-top';
 export default function App() {
@@ -31,9 +32,9 @@ export default function App() {
         <Route path="/cart">
           <Cart></Cart>
         </Route>
-        <Route path="/checkout">
+        <PrivateRoute path="/checkout">
           <Checkout></Checkout>
-        </Route>
+        </PrivateRoute>
         <Route path="/login">
           <Login></Login>
         </Route>
