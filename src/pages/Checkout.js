@@ -42,6 +42,7 @@ function Checkout(props) {
       if (order) {
         showAlert({ msg: 'your order is complete' });
         clearCart();
+        clearTotal();
         history.push('/');
         return;
       } else {

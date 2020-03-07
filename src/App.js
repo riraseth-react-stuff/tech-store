@@ -14,7 +14,8 @@ import ProductDetails from './pages/ProductDetails';
 import Header from './components/Header';
 import Alert from './components/Alert';
 import PrivateRoute from './components/PrivateRoute';
-//scroll to top
+import ScrollButton from './components/ScrollButton';
+//scroll to top on page change
 import ScrollToTop from 'react-router-scroll-top';
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <ScrollToTop></ScrollToTop>
       <Header></Header>
       <Alert></Alert>
+      <ScrollButton></ScrollButton>
       <Switch>
         <Route exact path="/">
           <Home></Home>
