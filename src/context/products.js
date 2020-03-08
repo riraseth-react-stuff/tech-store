@@ -68,18 +68,12 @@ const ProductProvider = ({ children }) => {
     }
     if (price !== 'all') {
       newProducts = newProducts.filter(item => {
-        switch (price) {
-          case 0:
-            return item.price < 300;
-            break;
-          case 300:
-            return item.price >= 300 && item.price <= 650;
-            break;
-          case 650:
-            return item.price > 650;
-            break;
-          default:
-            break;
+        if (price === 0) {
+          return item.price < 300;
+        } else if (price === 300) {
+          return item.price >= 300 && item.price <= 650;
+        } else {
+          return item.price > 650;
         }
       });
     }
