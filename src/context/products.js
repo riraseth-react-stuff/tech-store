@@ -9,6 +9,7 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [featured, setFeatured] = useState([]);
   const [sorted, setSorted] = useState([]);
+  //paginated page
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState({
     search: '',
