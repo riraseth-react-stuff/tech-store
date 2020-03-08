@@ -13,7 +13,7 @@ export default function Product({ image, title, id, price }) {
       </div>
       <div className="product-footer">
         <p className="product-title">{title || 'default title'}</p>
-        <p className="product-price">{price || 0}</p>
+        <p className="product-price">${price || 0}</p>
       </div>
     </article>
   );
