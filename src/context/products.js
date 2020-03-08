@@ -11,7 +11,7 @@ const ProductProvider = ({ children }) => {
   const [sorted, setSorted] = useState([]);
   //paginated page
   const [page, setPage] = useState(0);
-  const [filter, setFilter] = useState({
+  const [filters, setFilters] = useState({
     search: '',
     category: 'all',
     shipping: false,
@@ -46,7 +46,7 @@ const ProductProvider = ({ children }) => {
         featured,
         sorted,
         page,
-        filter,
+        filters,
         changePage,
         updateFilters
       }}
