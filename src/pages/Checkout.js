@@ -7,12 +7,12 @@ import {
   CardElement,
   StripeProvider,
   Elements,
-  injectStripe
+  injectStripe,
 } from 'react-stripe-elements';
 import submitOrder from '../strapi/submitOrder';
 
 function Checkout(props) {
-  const { cart, total, clearTotal, clearCart } = useContext(CartContext);
+  const { cart, total, clearCart } = useContext(CartContext);
   const { user, showAlert, hideAlert, alert } = useContext(UserContext);
   const history = useHistory();
   // state values
@@ -26,7 +26,7 @@ function Checkout(props) {
     e.preventDefault();
     const response = await props.stripe
       .createToken()
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
     const { token } = response;
     if (token) {
       setError('');
@@ -36,19 +36,18 @@ function Checkout(props) {
         total: total,
         items: cart,
         stripeTokenId: id,
-        userToken: user.token
+        userToken: user.token,
       });
       //user.token is from userContext
       if (order) {
         showAlert({ msg: 'your order is complete' });
         clearCart();
-        clearTotal();
         history.push('/');
         return;
       } else {
         showAlert({
           msg: 'there was an error with your order. please try again!',
-          type: 'danger'
+          type: 'danger',
         });
       }
     } else {
@@ -73,7 +72,7 @@ function Checkout(props) {
             name="name"
             id="name"
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         {/* end of single input */}
